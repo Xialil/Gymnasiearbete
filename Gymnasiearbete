@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<style> 
+
+body {
+    background-color: #00bfff;
+  }
+
+  .början{
+position: absolute;
+top: 40%;
+left: 45%;
+transform: translate(-50%, -50%);
+  }
+
+
+.start {
+    background-color: #00bfff;
+    color: white;
+    border-color: white;
+    padding: 28px 80px;
+    font-size: 24px;
+    position: fixed;
+    left: 50%;
+    cursor: pointer;
+    border: 5px solid;
+    border-color: white;
+}
+
+.start:hover{
+  transition-duration: 0,4s;
+  background-color: white;
+  color: #00bfff;
+  border-color: #00bfff;
+}
+
+
+.info {
+  display: none;
+  position: absolute;
+top: 40%;
+left: 45%;
+transform: translate(-50%, -50%);
+background-color: #00bfff;
+    color: white;
+    border-color: white;
+    padding: 28px 80px;
+    font-size: 24px;
+    position: fixed;
+    left: 50%;
+    cursor: pointer;
+    border: 5px solid;
+    border-color: white;
+    width: 1000px;
+}
+
+.title {
+  border-bottom: 2px solid lightblue;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.infolist .in {
+  margin: 5px;
+}
+
+.infolist .in span{
+  font-weight: 500;
+  color:red;
+}
+
+.info .knappar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
+
+.info .knappar button{
+  margin: 0 10px;
+  height: 50px;
+  width: 200px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.knappar button.avsluta {
+  border-color: red;
+  color: black;
+}
+
+.knappar button.avsluta:hover{
+  background-color: black;
+  color: white;
+  transition-duration: 0,4s;
+}
+
+.knappar button.fortsätt {
+  border-color: white;
+  color: white;
+  background-color: #00bfff;
+}
+
+.knappar button.fortsätt:hover{
+  background-color: white;
+  color: #00bfff;
+  transition-duration: 0,4s;
+}
+
+.Instruktioner1 {
+  display: none;
+position: absolute;
+top: 40%;
+left: 45%;
+transform: translate(-50%, -50%);
+background-color: #00bfff;
+    color: white;
+
+    padding: 28px 80px;
+    font-size: 50px;
+    position: fixed;
+    left: 50%;
+    cursor: pointer;
+    width: 1700px;
+}
+
+.intro {
+  text-align: center;
+}
+
+
+.knapp button.next {
+
+  height: 50px;
+  width: 200px;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #00bfff;
+
+}
+
+.knapp  {
+  text-align: center;
+}
+
+.knapp button.next:hover{
+  background-color: white;
+  color: #00bfff;
+  transition-duration: 0,4s;
+}  
+
+.Instruktioner2 {
+position: absolute;
+top: 40%;
+left: 45%;
+transform: translate(-50%, -50%);
+background-color: #00bfff;
+    color: white;
+
+    padding: 28px 80px;
+    font-size: 50px;
+    position: fixed;
+    left: 50%;
+    cursor: pointer;
+    width: 1700px;
+}
+
+
+
+</style>
+</head>
+<body>
+  <div class="början"> 
+  <button class="start"> Börja test</button>
+</div>
+  <div class="info">
+    <div class="title"> 
+      <span>Information om detta reaktionstest</span> 
+    </div>
+    <ol class="infolist">
+      <li class="in"> Du kommer få börjas med att ange ditt kön och din ålder. Testet är utöver den informationen helt anonymt.</li>
+      <li class="in"> Det är totalt <span>10 övningar</span> och du kommer få instruktioner inför var och en.</li>
+      <li class="in">Dina resultat kommer användas för en undersökning.</li>
+    </ol>
+
+  <div class="knappar"> 
+    <button class="avsluta"> Gå ur testet</button>
+    <button class="fortsätt"> Fortsätt</button>
+  </div>
+
+  </div>
+
+<div class="Instruktioner1"> 
+  <header class="intro"> Instruktioner</header>
+  <div class="instruktioner">
+    Tryck med musen någonstans på skärmen när skärmen byter färg från rött till grönt så snabbt du kan.
+  </div>
+   <div class="knapp"> 
+    <button class="next"> Fortsätt</button>
+   </div>
+<!--
+   <body style="background-color: red;"></body>
+
+   <body style="background-color: green;"></body>
+-->
+
+   <div class="Instruktioner2">
+    <header class="intros"> Instruktioner</header>
+    <div class="instruktion">
+      <ol class="infolista">
+        <li class="in">Skärmen kommer nu visa fyra former: triangel, kvadrat, cirkel och stjärna i en slumpmässig ordning.</li>
+        <li class="in">När stjärnan visas ska du klicka på skärmen så fort som möjligt.</li>
+      </ol>
+    </div>
+   </div>
+
+
+
+</div>
+</body>
+</html>
