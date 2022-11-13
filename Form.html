@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<body>
+
+<div class="titel"><h1>Reaktionstidstest</h1></div>
+
+
+
+<p>Gör båda nedanstående tester.</p>
+<p>När du har utfört båda testerna kommer du att se två genomsnittsvärden på skärmen för din reaktionstid.Var snäll och fyll i de värdena och dina personuppgifter i formuläret längst ner.</p>
+<p>Dina svar och resultat kommer användas i en statistisk undersökning och alla resultat är anonyma.</p>
+
+<div class="titel2"><h2>Simpel test</h2></div>
+
+
+<p>I detta första test kommer skärmen byta färg från rött till grönt när du väl startat. Vid färgskiftet ska du klicka någonstans i det färgade fältet så fort som möjligt. Försöket kommer repeteras totalt 5 gånger.</p>
+<script src="function parseNum(x){var num=x.toString(.js"></script>
+<style>
+    #reactionTimeBox {
+        background: #00bfff;
+        border: none;
+        cursor: pointer;
+    }
+
+    #reactionText {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        color: #fff;
+        font-size: 1.8em;
+        padding: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .titel {
+        text-align: center;
+    }
+
+    .titel2 {
+        text-align: center;
+    }
+
+    .box {
+        margin-top: 0px;
+        border-radius: 0px 0px 6px 6px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .topReactionTime {
+        border-radius: 6px 6px 0px 0px;
+        background: #eee;
+        padding: 10px;
+    }
+
+    .timeMiniBox {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        display: inline-block;
+        margin: 5px 0px;
+        background: #e2e2e2;
+        border-radius: 6px;
+        font-size: 14px;
+        padding: 5px 10px;
+        margin-right: 10px;
+    }
+
+    table {
+        height: 100%;
+        color: #fff;
+    }
+
+    #knapp {
+        background-color: #00bfff;
+        color: white;
+        font-size: medium;
+        padding: auto;
+        border-radius: 8px;
+        border-color: #00bfff;
+        cursor: pointer;
+        
+    }
+
+    #knapp :hover{
+        background-color: white;
+        color: #00bfff;
+    }
+
+    p {
+        text-align: center;
+    }
+
+
+</style>
+<div class="topReactionTime">
+<div class="timeMiniBox"><span id="totalClicks">0</span>/5</div>
+<div class="timeMiniBox">Medelvärde: <span id="reactionAverage"></span></div>
+<div class="timeMiniBox">Snabbast tid: <span id="reactionBest"></span></div>
+</div>
+<div id="reactionTimeBox" class="box w-100 d-flex align-items-center justify-content-center" style="min-height:400px" onmousedown="run('start')">
+<div id="reactionText">Börja Simpel testet</div>
+</div>
+<script>
+    var waitForGreenText = 'Klicka på grönt';
+    var startText = 'Starta testet';
+    var clickText = 'Klick!';
+    var nextText = 'Klicka för att fortsätta';
+    var tooSoonText = 'För tidigt!';
+    var averageText = 'Genomsnitt';
+    var bestText = 'Bäst';
+</script>
+<script src="testa.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://kalkylator.info/assets/js/tools/reaction-time-test.min.js"></script>
+
+<title>Reaction Time Test</title>
+
+<script src="testa.js" type="text/javascript"></script>
+</head>
+
+
+
+<div id="content" role="main">
+<h2 align="center">Känna-igen test</h2>
+
+<p>I detta test kommer en triangel visas på skärmen. Efter en viss tid kommer det att byta till en cirkel. Vid formskiftet ska du klicka någonstans i det färgade området så snabbt som möjligt. Försöket kommer upprepas 5 gånger.</p>
+
+
+<script type="text/javascript">reactionMain();</script>
+</div>
+
+
+<script type="text/javascript">document.write(getBodyEnd());</script>
+
+
+<head>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <script>
+        function SubForm (){
+            $.ajax({
+                url:"https://api.apispreadsheets.com/data/MMhfVOlUYUGlWhU5/",
+                type:"post",
+                data:$("#myForm").serializeArray(),
+                success: function(){
+                    alert("Form Data Submitted :)")
+                },
+                error: function(){
+                    alert("There was an error :(")
+                }
+            });
+        }
+    </script>
+</head>
+
+
+
+    <form id="myForm">
+        <label>Ålder</label>
+        <input name="age" />
+        <br/>
+        <label>Kön</label>
+        <br/>
+        <input type="radio" id="gender" name="gender" value="Man"/> Man<br/>
+        <input type="radio" id="gender" name="gender" value="Kvinna"/> Kvinna <br/>
+        <br/>
+        <label>Simpel test</label>
+        <input name="simpel" />
+        <br
+        <label>Känna igen test</label>
+        <input name="recognize" />
+<br
+    </form>
+    <button id="knapp" onclick='SubForm()'>Submit</button>
+</body>
+</html>

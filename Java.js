@@ -1,40 +1,231 @@
-function parseNum(x) {
-    var num=x.toString().replace(/,/g,".");
-    return""!==num&&parseFloat(num)
+var w,h,g,el,my={}
+var firstshapeTime;
+var timeID;
+var shapeTimeID;
+var state;
+
+function reactionMain(){
+    w=500;
+    h=500;
+    clrs=["red"];
+    this.MAX=5;
+    this.count=0;
+    this.times=[];
+    var s='';
+    s+=`<div style="position:relative; max-width:${w}px;height:${h}px; border-radius: 10px; margin:auto; display:block; background-color: #00bfff; ">`;
+    s+='<canvas id="canvasId" width="'+w+'" height="'+h+'" style=""></canvas>';
+    startStr='Klicka för att börja.';
+    s+='<div id="instr" style="position: absolute; left:50px; top:100px; width:360px; font:18px Verdana; color: whitesmoke; background-color: #00bfff; border-radius: 10px; padding: 3%; transition: all linear 0.1s;">'+startStr+'</div>';
+    s+='<div id="circle" style="display: block; background-color: '+clrs[0]+'; position: absolute; left:40%; top:40%; width:100px; height:100px; border-radius:50px; opacity: 0; "><canvas id="circleCanvas" ></canvas> </div>';
+    s+='<div id="triangle" style="display: block; background-color: '+clrs[0]+'; position: absolute; left:40%; top:40%; width:100px; height:100px; border-radius:50px; opacity: 0; "> <canvas id="triangleCanvas" ></canvas></div>'; 
+    s+='<div id="rectangle" style="display: block; background-color: '+clrs[0]+'; position: absolute; left:40%; top:40%; width:100px; height:100px; border-radius:50px; opacity: 0; "><canvas id="rectangleCanvas" ></canvas> </div>';   
+    s+='<div id="result" style="position: absolute; left:5%; top:50px; width:90%; font:18px Verdana; color: whitesmoke; text-align: center;"></div>';
+    s+='<div id="click" style="position: absolute; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0); cursor: pointer;" onmousedown="doClick()"></div>';
+    s+='</div>';
+    document.write(s);
+    el=document.getElementById('canvasId');
+    ratio=2;el.width=w*ratio;
+    el.height=h*ratio;
+    el.style.width=w+"px";
+    el.style.height=h+"px";
+    g=el.getContext("2d");
+    g.setTransform(ratio,0,0,ratio,0,0);
+    drawCircle();
+    drawTriangle();
+    drawRectangle();
+    showFigure('empty')
+    state='start';
 }
-function gapNum(x){
-    var num;
-    num = document.getElementById(x).value;
-    return ""!==(num=num.toString().replace(/,/g,"."))&&parseFloat(num);
-}
-function format2dec(x){
-    return x%1!=0&&(x=x.toFixed(2)),x}
-    function showResults(){
-        document.getElementById("allResults").scrollIntoView({behavior:"smooth"})
+
+function showFigure(figureName) {
+    var circleDiv = document.getElementById('circle');
+    var triangleDiv = document.getElementById('triangle');
+    var rectangleDiv = document.getElementById('rectangle');
+    switch(figureName) {
+        case 'circle':
+            circleDiv.style.opacity = 1;
+            triangleDiv.style.opacity = 0;
+            rectangleDiv.style.opacity =0;
+            break;
+        case 'triangle':
+            circleDiv.style.opacity = 0;
+            triangleDiv.style.opacity = 1;
+            rectangleDiv.style.opacity =0;
+            break;
+        case 'rectangle':
+            circleDiv.style.opacity = 0;
+            triangleDiv.style.opacity = 0;
+            rectangleDiv.style.opacity =1;
+            break;
+        case 'empty':
+            circleDiv.style.opacity = 0;
+            triangleDiv.style.opacity = 0;
+            rectangleDiv.style.opacity =0;
+            break;
     }
-    var formatSeconds=r=>{
-        var a=parseInt(r,10);return[Math.floor(a/3600),Math.floor(a/60)%60,a%60].map(r=>r<10?"0"+r:r).filter((r,a)=>"00"!==r||a>0).join(":")};
-        function convertSeconds(x){return new Date(1e3*x).toISOString().substr(11,8)}
-        function convertSeconds2(x){var t=parseInt(x,10),o=Math.floor(t/3600),r=Math.floor((t-3600*o)/60),n=t-3600*o-60*r;return o<10&&(o="0"+o),r<10&&(r="0"+r),n<10&&(n="0"+n),o+":"+r+":"+n}
-        function addDecimals(num){
-            return Math.round(100*num)/100}
-            function isNumber(num){
-                return!isNaN(num)}
-                function ucfirst(str){return str[0].toUpperCase()+str.slice(1)}
-                function getRandom(min,max){return Math.random()*(max-min)+min}
-                function calcListener(btn,myFunction){document.getElementById(btn).addEventListener("click",myFunction)}
-                function calcValidity(id){document.getElementById(id).reportValidity()}
-                function invalidField(id){document.getElementById(id).classList.add("red-bg")}
-                function validField(id){document.getElementById(id).classList.remove("red-bg")}
-                function greenField(id){document.getElementById(id).classList.add("green-bg")}
-                function ungreenField(id){document.getElementById(id).classList.remove("green-bg")}
-                function prGet(id){return document.getElementById(id)}
-                function clearAll(){document.querySelectorAll("input").forEach(input=>{input.value="",input.checked=!1}),document.querySelectorAll("textarea").forEach(textarea=>{textarea.innerHTML="",textarea.value=""})}
-                function secondsToDhms(x){
-                    var negative=!1;
-                    if((x=Number(x))<0){x*=-1;var negative=!0}
-                    var days=Math.floor(x/86400),hours=Math.floor(x%86400/3600),minutes=Math.floor(x%3600/60),seconds=Math.floor(x%60);return 1==negative&&(0!==days&&(days*=-1),0!==hours&&(hours*=-1),0!==minutes&&(minutes*=-1),0!==seconds&&(seconds*=-1)),{days:days,hours:hours,minutes:minutes,seconds:seconds}}
-                function secondsToHHMMSS(secs){return hours=Math.floor(secs/3600),secs%=3600,minutes=Math.floor(secs/60),seconds=secs%60,seconds=1*seconds.toFixed(0),String(hours).length<1?hours="00":String(hours).length<2&&(hours="0"+hours),String(minutes).length<1?minutes="00":String(minutes).length<2&&(minutes="0"+minutes),String(seconds).length<1?seconds="00":String(seconds).length<2&&(seconds="0"+seconds),hours+":"+minutes+":"+seconds}
-                function prFix(number){return void 0===number||0===number?number:number>.01||number<-.01?1*number.toFixed(2):number>1e-4||number<-1e-4?1*number.toFixed(4):number>1e-8||number<-1e-8?1*number.toFixed(8):void 0}
-                const addCss=(element,cssCode)=>Object.assign(element.style,cssCode);
-                function prFix2(number){return void 0===number||0===number?number:number>.1||number<-.1?1*number.toFixed(2):number>.001||number<-1e-4?1*number.toFixed(4):number>1e-7||number<-1e-7?1*number.toFixed(8):void 0}
+
+}
+
+function drawCircle(){   
+    let canvas = document.querySelector("#circleCanvas");
+    let context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#00bfff";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = '#f44336';
+    context.arc(100, 75, 50, 0, 2 * Math.PI);
+    context.fill();
+}
+
+function drawTriangle() {
+    let canvas = document.querySelector("#triangleCanvas");
+    let context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#00bfff";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.beginPath();
+    context.moveTo(100, 15);
+    context.lineTo(150, 115);
+    context.lineTo(50, 115);
+    context.closePath();
+    context.fillStyle = "#f44336";
+    context.fill();
+}
+
+function drawRectangle() {
+    let canvas = document.querySelector("#rectangleCanvas");
+    let context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#00bfff";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#f44336";
+    context.fillRect(50, 15, 100, 100);
+    context.fill();
+}
+
+function doShape() {
+    if (state != 'firstshape' && state != 'secondshape') {
+        var time=2000+Math.random()*4000;    
+        timeID=setTimeout(
+            function() {stateMachine('timeout');},
+            time
+        ); 
+    }
+    var shapeTime=500+Math.random()*1000;
+    shapeTimeID=setTimeout(
+        function() {
+            stateMachine('shapeTimeout');
+        },
+        shapeTime
+    );
+    document.getElementById('instr').innerHTML='Klicka när du ser triangeln';
+    g.clearRect(0,0,el.width,el.height);
+    if (state == 'secondshape') {
+        showFigure('circle');
+        state = 'firstshape';
+    } else {
+        showFigure('rectangle');
+        state = 'secondshape';
+    }
+}
+
+function doMeasure() {
+    firstshapeTime=performance.now();
+    clearTimeout(shapeTimeID);
+    showFigure('triangle');
+    state='measure';
+}
+
+function doTooEarly() {
+    document.getElementById("instr").innerHTML="För tidigt, klicka för att försöka igen";
+    clearTimeout(timeID);
+    clearTimeout(shapeTimeID);
+    showFigure('empty');
+    state = 'tooearly';
+}
+
+function doResult() {
+    var clickTime=performance.now();
+    elapsed=(clickTime-firstshapeTime)/1000;
+    times.push(elapsed);
+    document.getElementById("result").innerHTML=showResult();
+    document.getElementById('instr').innerHTML="Bra jobbat! Klicka för nästa mätning";
+    this.count++;
+    showFigure('empty');
+    if(this.count==this.MAX) {
+        doFinished();
+    } else {
+        state='result';
+    }
+}
+
+function doFinished() {
+    document.getElementById('instr').innerHTML="Mätningen avklarad, tack för din medverkan!<br>"+showAverage();
+}
+
+function stateMachine(eventName){
+    console.log('stateMachine(' + eventName + ')');
+    switch(state){
+        case 'start':
+            if(eventName == 'click') {
+                doShape();
+            }
+            break;
+        case 'firstshape':
+        case 'secondshape':
+            if(eventName == 'shapeTimeout') {
+                doShape();
+            }
+            if(eventName == 'timeout') {
+                doMeasure();
+            } else if(eventName == 'click') {
+                doTooEarly();
+            }
+            break;
+        case 'tooearly':
+            if(eventName == 'click') {
+                doShape();
+            }
+            break;   
+        case 'measure':
+            if(eventName == 'click') {
+                doResult();
+            }
+            break;
+        case 'result':
+            if(eventName == 'click') {
+                doShape();
+            }
+            break;
+        default:
+    }
+}
+
+function doClick() {
+    stateMachine('click');
+}
+
+function showResult(){
+    var s='';
+    var timesN=this.times.length;
+    for(var i=0;i<timesN;i++) {
+        if(i>0)s+=', ';
+        s+=fmt3(this.times[i])+'s';
+    }
+    return s;
+}
+
+function showAverage() {
+    var s='';
+    var timesN=this.times.length;
+    var sum=0;
+    for(var i=0;i<timesN;i++) {
+        sum+=this.times[i];
+    }
+    var avg=sum/this.times.length;
+    s+='Genomsnitt: '+fmt3(avg)+' sec';
+    return s;
+}
+
+function fmt3(v){return Math.round(v*1000)/1000}
+
